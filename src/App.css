@@ -1,0 +1,11 @@
+.container {
+  margin: auto;
+  max-width: 600px;
+}
+.todoBlock {
+  margin-top: 50px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color:#fff;
+  box-shadow: -9px 17px 13px rgba(0,0,0,0.1);
+}

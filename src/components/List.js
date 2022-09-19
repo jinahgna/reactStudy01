@@ -29,15 +29,20 @@ export default function List({todoData, setTodoData}) {
         setTodoData(newTodoData);
     };
     // 할일 삭제
-    const handleDelete = (id) => {
-        let newTodoData = todoData.filter((data) => data.id !== id);
-        setTodoData(newTodoData);
+    const handleDelete = (id, index) => {
+        // filter 를 활용한 삭제기능 구현
+        // let newTodoData = todoData.filter((data) => data.id !== id);
+        // setTodoData(newTodoData);
+        // find 를 활용한 삭제기능 구현
+        
+        // index값으로 찾아서 삭제기능 구현
+        setTodoData((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
     };
 
 
     return (
         <div>
-            {todoData&&todoData.map((data)=> (
+            {todoData.map((data, index)=> (
             <div style={getStyle(data.completed)} key={data.id}>
                 <input 
                 type="checkbox" 
@@ -47,7 +52,7 @@ export default function List({todoData, setTodoData}) {
                 <label htmlFor={data.id}>{data.title}</label>
                 <button 
                 style={btnStyle} 
-                onClick={() => handleDelete(data.id)}>
+                onClick={() => handleDelete(data.id, index)}>
                 x
                 </button>
             </div>
